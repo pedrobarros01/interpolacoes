@@ -1,4 +1,5 @@
 import sympy as sp
+
 def fat(n):
     resultado=1
     for num in range(1,n+1):
@@ -14,7 +15,7 @@ def printar_tabela_delta(x_print, y_ptint):
             print(y_ptint[i][j], end = "\t")
         print("")
 
-def gregory_newton_interpolation(x1, y1, xi):
+def gregory_newton_interpolation(x1, y1, xi, num_decimal_places=2):
     n = len(x1)
     if len(y1) != n:
         raise ValueError("As listas x e y devem ter o mesmo tamanho")
@@ -41,9 +42,9 @@ def gregory_newton_interpolation(x1, y1, xi):
         for i in range(0, ordem):
             valor *= (xi - x1[i])
         sum += (valor * delta) / (fatorial * pow(h, ordem))
-    return sum, y
+    return round(sum, num_decimal_places), y
 
-def gregory_newton_interpolation_equation(x1, y1):
+def gregory_newton_interpolation_equation(x1, y1, num_decimal_places=2):
     n = len(x1)
     if len(y1) != n:
         raise ValueError("As listas x e y devem ter o mesmo tamanho")
@@ -68,7 +69,9 @@ def gregory_newton_interpolation_equation(x1, y1):
         for i in range(0, ordem):
             valor *= (xi - x1[i])
         sum += (valor * delta) / (fatorial * pow(h, ordem))
-    return sp.expand(sum)
+    
+    polinomio = sp.expand(sum)
+    return sp.N(polinomio, num_decimal_places)
 
 
 

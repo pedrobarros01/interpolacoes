@@ -1,5 +1,5 @@
-from sympy import symbols, expand
-def interpolacao_newton(x, y, valor):
+from sympy import symbols, expand, N
+def interpolacao_newton(x, y, valor, num_decimal_places=2):
     n = len(x)
     f = [[0] * n for _ in range(n)]
 
@@ -17,11 +17,11 @@ def interpolacao_newton(x, y, valor):
         termo *= (valor - x[i - 1])
         resultado += f[0][i] * termo
 
-    return resultado
+    return round(resultado, num_decimal_places)
 
 
 
-def polinomio_interpolador_newton(x, y):
+def polinomio_interpolador_newton(x, y, num_decimal_places=2):
     n = len(x)
     f = [[0] * n for _ in range(n)]
 
@@ -39,8 +39,8 @@ def polinomio_interpolador_newton(x, y):
     for i in range(1, n):
         termo *= (x_symbol - x[i - 1])
         polinomio += f[0][i] * termo
-
-    return expand(polinomio)
+    resultado = expand(polinomio)
+    return N(resultado, num_decimal_places)
 
 
 
