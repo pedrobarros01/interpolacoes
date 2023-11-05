@@ -65,7 +65,7 @@ class Interpolacao:
             raise ValueError("As listas x e y devem ter o mesmo tamanho")
         
         # Calcule o passo h
-        h = self.x[1] - self.y[0]
+        h = self.x[1] - self.x[0]
         
         y = [[0]*n for _ in range(n) ]
         
@@ -193,11 +193,13 @@ class Interpolacao:
 
 if __name__ == '__main__':
         # Exemplo de uso
-    x = [0, 0.1, 0.2, 0.3, 0.4, 0.5]
-    y = [1, 1.11, 1.22, 1.35, 1.49, 1.65]
-    valor_interpolar = 0.35
+    x = [5, 10, 15]
+    y = [0.9998, 0.9997, 0.9991]
+    valor_interpolar = 13
     interpolacao = Interpolacao(x, y, valor_interpolar)
-    print(interpolacao.erro_com_derivado())
+    print(f'gregory: {interpolacao.gregory_newton_interpolation()}')
+    print(f'lagrange: {interpolacao.lagrange_interpolation()}')
+    print(f'newton: {interpolacao.interpolacao_newton()}')
 
 
 
