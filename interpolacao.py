@@ -13,6 +13,7 @@ class Interpolacao:
     '''
 
     função quu recebe o menor valor de x ou o maior valor de x e retorna o valor de f(x) derivado a self.ordem + 1 vezes
+    - mudar
     '''
     def __f_derivado(self, x: int | float):
         return math.exp(x) * (x**2) + 12*math.exp(x) * x + 30*math.exp(x)  
@@ -21,6 +22,7 @@ class Interpolacao:
     '''
     função que realiza o phi da formula de erro
     o phi é justamente voce pega o valor_interpolar e diminui com todos os x e no final multiplica-los
+    
     '''
     def __phi(self, x_est: int | float):
         phi = 1
@@ -43,6 +45,7 @@ class Interpolacao:
 
     '''
     função que pega o f(x) da questao e retorna seu y de acordo com o valor_interpolar
+    - mudar
     '''
     def __f(self, x: int | float):
         return x
